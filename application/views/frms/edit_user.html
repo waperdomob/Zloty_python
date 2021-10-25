@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100&display=swap" rel="stylesheet">
+    <meta name="author" content="Zloty">
+    <meta name="description" content="Se realiza un formulario donde trae los datos de la base de datos (adbzloty) se actualiza esta informacion desde el archivo modicar.php, el cual finlmente llama modifi.php donde se actualiza y cierra conexion.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="static/img/LOGOsolito.png">
+    <link rel="stylesheet" href="static/css/modificarPerfil.css">
+    <link rel="stylesheet" href="static/css/imagenS.css">
+    <title>Configuración de tu Perfil</title>
+</head>
+
+<body>
+        <!----------- menu principal --------- -->
+        <nav id="menu" class="navbar navbar-expand-lg fixed-top bg-pink">
+            <div class="container">
+                <a class="navbar-brand" href="#">
+                    <img src="static/img/bigblanco.png" alt="" height="80px" width="160px">
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <ul class="nav nav-pills nav-fill">
+                <div class="collapse navbar-collapse" id="navbarSupportedContent" style="text-align: center;">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item correrUsers">
+                            <div class="i">
+                            <i class="fas fa-border-style"></i>
+                            </div>
+                            <a class="nav-link letracolor " href="#" style="color: #ffffff;">
+                                Tablas de productos</a>
+                        </li>
+                        <li class="nav-item correrUser">
+                            <div class="i">
+                                <i class="fas fa-user-circle"></i>
+                            </div>
+                            <a class="nav-link letracolor " href="/edit_user" style="color: #ffffff;">
+                                <?php
+                                echo $_SESSION['nombre'];
+                                ?>
+                            </a>
+                        </li>
+                        <li class="nav-item correrUser">
+                            <div class="i">
+                                <i class="fas fa-plus"></i>
+                            </div>
+                                <a class="nav-link letracolor " href="/log_out" style="color: #ffffff;">
+                            Cerrar Sesión
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                </ul>
+            </div>
+        </nav>
+
+
+  <div class="container">
+  <br><br><br><br><br><br>
+  <table>
+      <!-- actualizar datos formulario -->
+    <th>
+      <div class="col-8">
+            <form action="/update_user" method="POST" enctype="multipart/form-data">
+              <div class="form-row contenedorCompleto">
+                <div class="form-group col-md-10" style="margin-top: 10%;">
+                  <label for="inputAddress" style="color: white;">Nombre:</label>
+                  <input type="text" class="form-control" name="nombre" id="inputAddress"
+                    placeholder="Ingrese Nombre" value="<?php echo $matrizusuario[0]['nombre'];?>" autofocus required>
+                </div>
+                <div class="form-group col-md-10";>
+                  <label for="inputAddress" style="color: white;">Apellido:</label>
+                  <input type="text" class="form-control" name="apellido" id="inputAddress"
+                    placeholder="Ingrese Apellido" value="<?php echo $matrizusuario[0]['apellido']; ?>" autofocus required>
+                </div>
+                <div class="form-group col-md-10">
+                  <label for="inputAddress" style="color: white;">Telefono de contacto:</label>
+                  <input type="text" class="form-control" name="telefono"
+                    value="<?php echo $matrizusuario[0]['telefono']; ?>"  placeholder="30000000" required>
+                </div>
+                <div class="form-group col-md-10">
+                  <label for="inputAddress" style="color: white;">Ciudad:</label>
+                    <select id="inputState" type="text" name="ciudad"
+                      value="<?php echo $matrizusuario[0]['ciudad']; ?>" class="form-control controls">
+                    <option selected>Bogotá D.C</option>
+                    <option>Medellín</option>
+                    <option>Calí</option>
+                    <option>Barranquilla</option>
+                    <option>Cartagena</option>
+                    <option>Bucaramanga</option>
+                    <option>Manizales</option>
+                    <option>Pereira</option>
+                    <option>Cúcuta</option>
+                    <option>Ibague</option>
+                    <option>Valledupar</option>
+                    <option>Boyáca</option>
+                    <option>Pasto</option>
+                    <option>Armenia</option>
+                    <option>Villavicencio</option>
+                    <option>Neiva</option>
+                    <option>Popayán</option>
+                    <option>Armenia</option>
+                    </select>
+                </div>
+              </div>
+              <div class="container botones">
+                <div class="row">
+                  <div class="col-sm">
+                    <input type="submit" class="btn colorBoton" value="Confirmar Cambios"></input> 
+                  </div>
+                  <div class="col-sm">
+                    <button type="submit" class="btn colorBoton  "><a href="/index_user"
+                        style="text-decoration: none; color: white;">Cancelar </a> </button> </div>
+                </div>
+              </div>
+              <th>
+                <div class="container-2">
+                  <div class="card">
+ 
+                    <img id="img-preview" src="">
+                  
+                    <div class="card-footer">
+                      <input type="file" id="img-uploader" name="images" required>
+                    </div>
+                  </div>
+                </div>
+              </th>
+            </form>
+          </div>
+        </div>
+    </th>
+  </table>
+  {% include 'footer.html' %}
